@@ -1,0 +1,29 @@
+{
+    "env": {
+        "RTOS_SDK_TOOLS": "~/esp/xtensa-lx106-elf",
+        "RTOS_SDK_PATH": "~/esp/ESP8266_RTOS_SDK"
+    },
+    "configurations": [
+        {
+            "name": "esp8266",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}",
+                    "${RTOS_SDK_PATH}",
+                    "${RTOS_SDK_TOOLS}"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${RTOS_SDK_TOOLS}/**",
+                "${RTOS_SDK_PATH}/**"
+            ],
+            "defines": [],
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}

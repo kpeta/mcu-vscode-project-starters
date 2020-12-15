@@ -1,0 +1,29 @@
+{
+    "env": {
+        "IDF_TOOLS": "~/.espressif/tools",
+        "IDF_PATH": "~/esp/esp-idf"
+    },
+    "configurations": [
+        {
+            "name": "esp32",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}",
+                    "${IDF_PATH}",
+                    "${IDF_TOOLS}"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${IDF_TOOLS}/**",
+                "${IDF_PATH}/**"
+            ],
+            "defines": [],
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}
