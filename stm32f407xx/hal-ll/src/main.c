@@ -1,20 +1,29 @@
-int main(void)
+#include "stm32f4xx_hal.h"
+#include "stm32f407xx.h"
+
+void SystemClockConfig(void);//optional
+
+int main(void) //blinky for f407 discovery board
 {
-	//RccAhb1enr -> enable clock
+	HAL_Init();
+	SystemClockConfig();
+
 	*(volatile unsigned int *)0x40023830 |= (1 << 3);
-
-	//GpiodModeReg -> gp output mode
-	*(volatile unsigned int *)0x40020C00 |= (1 << (2 * 14));
-
+	*(volatile unsigned int *)0x40020C00 |= (1 << (2 * 12));
 	while (1)
 	{
-		//GpiodDataReg 
-		//LED on
-		*(volatile unsigned int *)0x40020C14 |= (1 << 14);
-		for(int i = 0; i < 1000000; i++);
+		*(volatile unsigned int *)0x40020C14 ^= (0xFUL << 12);
+		HAL_Delay(1000);
+    	}
+}
 
-		//LED off
-		*(volatile unsigned int *)0x40020C14 &= ~(1 << 14);
-		for(int i = 0; i < 1000000; i++);
-	}
+void SystemClockConfig(void)
+{
+
+}
+
+void SysTick_Handler(void)
+{
+	HAL_IncTick();
+	HAL_SYSTICK_IRQHandler();//optional
 }
