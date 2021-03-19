@@ -1,0 +1,3 @@
+first hold nrst
+then press f5
+then quickly release nrst & press boot0

@@ -1,0 +1,136 @@
+ARM GAS  /tmp/ccx8TUZr.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.main,"ax",%progbits
+  18              		.align	1
+  19              		.global	main
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	main:
+  26              	.LFB130:
+  27              		.file 1 "Core/Src/main.c"
+   1:Core/Src/main.c **** #include "stm32f4xx_hal.h"
+   2:Core/Src/main.c **** #include "led.h"
+   3:Core/Src/main.c **** 
+   4:Core/Src/main.c **** int main()
+   5:Core/Src/main.c **** {
+  28              		.loc 1 5 0
+  29              		.cfi_startproc
+  30              		@ Volatile: function does not return.
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+   6:Core/Src/main.c ****     HAL_Init();
+  38              		.loc 1 6 0
+  39 0002 FFF7FEFF 		bl	HAL_Init
+  40              	.LVL0:
+   7:Core/Src/main.c ****     led_init();
+  41              		.loc 1 7 0
+  42 0006 FFF7FEFF 		bl	led_init
+  43              	.LVL1:
+  44              	.L2:
+   8:Core/Src/main.c **** 
+   9:Core/Src/main.c ****     while (1)
+  10:Core/Src/main.c ****     {
+  11:Core/Src/main.c ****         HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+  45              		.loc 1 11 0 discriminator 1
+  46 000a 4FF40051 		mov	r1, #8192
+  47 000e 0448     		ldr	r0, .L4
+ARM GAS  /tmp/ccx8TUZr.s 			page 2
+
+
+  48 0010 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+  49              	.LVL2:
+  12:Core/Src/main.c ****         HAL_Delay(500);
+  50              		.loc 1 12 0 discriminator 1
+  51 0014 4FF4FA70 		mov	r0, #500
+  52 0018 FFF7FEFF 		bl	HAL_Delay
+  53              	.LVL3:
+  54 001c F5E7     		b	.L2
+  55              	.L5:
+  56 001e 00BF     		.align	2
+  57              	.L4:
+  58 0020 00080240 		.word	1073874944
+  59              		.cfi_endproc
+  60              	.LFE130:
+  62              		.section	.text.SysTick_Handler,"ax",%progbits
+  63              		.align	1
+  64              		.global	SysTick_Handler
+  65              		.syntax unified
+  66              		.thumb
+  67              		.thumb_func
+  68              		.fpu fpv4-sp-d16
+  70              	SysTick_Handler:
+  71              	.LFB131:
+  13:Core/Src/main.c ****     }
+  14:Core/Src/main.c **** }
+  15:Core/Src/main.c **** 
+  16:Core/Src/main.c **** void SysTick_Handler(void)
+  17:Core/Src/main.c **** {
+  72              		.loc 1 17 0
+  73              		.cfi_startproc
+  74              		@ args = 0, pretend = 0, frame = 0
+  75              		@ frame_needed = 0, uses_anonymous_args = 0
+  76 0000 08B5     		push	{r3, lr}
+  77              	.LCFI1:
+  78              		.cfi_def_cfa_offset 8
+  79              		.cfi_offset 3, -8
+  80              		.cfi_offset 14, -4
+  18:Core/Src/main.c ****   HAL_IncTick();
+  81              		.loc 1 18 0
+  82 0002 FFF7FEFF 		bl	HAL_IncTick
+  83              	.LVL4:
+  19:Core/Src/main.c **** }
+  84              		.loc 1 19 0
+  85 0006 08BD     		pop	{r3, pc}
+  86              		.cfi_endproc
+  87              	.LFE131:
+  89              		.text
+  90              	.Letext0:
+  91              		.file 2 "/usr/arm-none-eabi/include/machine/_default_types.h"
+  92              		.file 3 "/usr/arm-none-eabi/include/sys/_stdint.h"
+  93              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+  94              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+  95              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h"
+  96              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+  97              		.file 8 "Core/Inc/led.h"
+  98              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ARM GAS  /tmp/ccx8TUZr.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+     /tmp/ccx8TUZr.s:18     .text.main:0000000000000000 $t
+     /tmp/ccx8TUZr.s:25     .text.main:0000000000000000 main
+     /tmp/ccx8TUZr.s:58     .text.main:0000000000000020 $d
+     /tmp/ccx8TUZr.s:63     .text.SysTick_Handler:0000000000000000 $t
+     /tmp/ccx8TUZr.s:70     .text.SysTick_Handler:0000000000000000 SysTick_Handler
+
+UNDEFINED SYMBOLS
+HAL_Init
+led_init
+HAL_GPIO_TogglePin
+HAL_Delay
+HAL_IncTick
