@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "name": "000_example",
+            "name": "STM32F401xC",
             "includePath": [
                 "${workspaceFolder}/**"            ],
             "defines": [
