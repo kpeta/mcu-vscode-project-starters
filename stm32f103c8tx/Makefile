@@ -37,6 +37,8 @@ BUILD_DIR = build
 # C sources
 C_SOURCES =  \
 $(wildcard Core/Src/*c) \
+$(wildcard Core/SEGGER_RTT_V698c/RTT/*.c) \
+$(wildcard Core/SEGGER_RTT_V698c/Syscalls/*.c) \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c \
@@ -54,7 +56,8 @@ Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c \
 
 # ASM sources
 ASM_SOURCES =  \
-startup_stm32f103xb.s
+startup_stm32f103xb.s \
+Core/SEGGER_RTT_V698c/RTT/SEGGER_RTT_ASM_ARMv7M.s
 
 
 #######################################
@@ -111,6 +114,7 @@ C_INCLUDES =  \
 -IDrivers/STM32F1xx_HAL_Driver/Inc \
 -IDrivers/STM32F1xx_HAL_Driver/Inc/Legacy \
 -IDrivers/CMSIS/Device/ST/STM32F1xx/Include \
+-ICore/SEGGER_RTT_V698c/RTT \
 -IDrivers/CMSIS/Include
 
 
@@ -177,6 +181,18 @@ $(BUILD_DIR):
 #######################################
 clean:
 	-rm -fR $(BUILD_DIR)
+
+#######################################
+# flash
+#######################################
+flash: all
+	JLinkExe -device stm32f103c8 -CommandFile ./command.jlink 
+
+#######################################
+# monitor
+#######################################
+monitor: 
+	telnet localhost 19021
   
 #######################################
 # dependencies

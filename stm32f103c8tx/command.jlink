@@ -1,0 +1,7 @@
+si SWD
+speed 4000
+r
+loadbin ./build/stm32f103c8tx.bin,0x08000000
+r
+go
+exit

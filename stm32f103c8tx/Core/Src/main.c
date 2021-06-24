@@ -1,5 +1,6 @@
 #include "stm32f1xx_hal.h"
 #include "led.h"
+#include "SEGGER_RTT.h"
 
 int main()
 {
@@ -9,7 +10,8 @@ int main()
     while (1)
     {
         HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-        HAL_Delay(500);
+        SEGGER_RTT_printf(0, "Hello world!\n");
+        HAL_Delay(1000);
     }
     
 }
